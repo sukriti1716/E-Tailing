@@ -12,6 +12,7 @@ const Order=require('./models/order')
 const passport=require('passport')
 // requiring passport-local library in which functions are passed from passport local mongoose
 const LocalStrategy=require('passport-local')
+// passport local
 
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
