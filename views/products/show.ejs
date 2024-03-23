@@ -1,0 +1,125 @@
+<%- include('../../partials/header')%>
+<%- include('../../partials/navbar')%>
+
+
+ 
+<div class="row" style=" padding:2rem;">
+  <div class="col-sm-12 col-md-6" >
+    <div class="card New mx-auto" " >
+      <div style="height:50%;">
+      <img style="width: 100%; height:350px; " src="<%= product.img%>" class="mx-auto card-img-top" alt="..." >
+      </div>
+      <div class="card-body" style="height:50%; background-color: rgba(169, 169, 169, 0.635);">
+        <!-- if user exists in -->
+        <%if(currUser){%>
+          <!-- if logged in and user is seller -->
+          <%if(userrole==='seller' && userrole.length>0){%>
+            <h5 class="card-title">Product : <%= product.name%></h5>
+            <h5 class="card-title">Rating : <%= product.rating%></h5>
+            <h5 class="card-text">₹ <%=product.price%></h5>
+            <h5>Category : <%=product.Category%></h5>
+            <p class="card-text"><%=product.desc%></p>
+            <div class="buttons">
+              <a href="/product/<%=product.id%>/addToCart" class="btn btn-sm btn-primary">Add To Cart</a>
+              <a href="/products/<%=product.id%>/buyNow" class="btn btn-sm btn-success">Buy Now</a>
+              <a href="/products/<%=product.id%>/edit" class="btn btn-sm btn-secondary">Edit</a>
+              <form action="/products/<%=product.id%>?_method=DELETE" method="post">
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </form>
+            </div>
+          <%}else{%>
+            <!-- user is not seller -->
+            <h5 class="card-title">Product : <%= product.name%></h5>
+            <h5 class="card-title">Rating : <%= product.rating%></h5>
+            <h5 class="card-text">₹ <%=product.price%></h5>
+            <h5>Category : <%=product.Category%></h5>
+            <p class="card-text"><%=product.desc%></p>
+            <div class="buttons">
+              <a href="/product/<%=product.id%>/addToCart" class="btn btn-sm btn-primary">Add To Cart</a>
+              <a href="/products/<%=product.id%>/buyNow" class="btn btn-sm btn-success">Buy Now</a>
+            </div>
+          <%}%>
+          <!-- else user doesnt in -->
+        <%}else{%>
+            <!-- user is not seller -->
+            <h5 class="card-title">Product : <%= product.name%></h5>
+            <h5 class="card-title">Rating : <%= product.rating%></h5>
+            <h5 class="card-text">₹ <%=product.price%></h5>
+            <h5>Category : <%=product.Category%></h5>
+            <p class="card-text"><%=product.desc%></p>
+            <div class="buttons">
+              <a href="/product/<%=product.id%>/addToCart" class="btn btn-sm btn-primary">Add To Cart</a>
+              <a href="/products/<%=product.id%>/buyNow" class="btn btn-sm btn-success">Buy Now</a>
+            </div>
+        <%}%> 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6">
+    <div class="mx-auto">
+    <h1 class="display-6" style="text-align: center;">Leave Your Reviews</h1>
+          <form action="/products/<%=product._id%>/add-review" method="post" class="w-100 review-form">
+            <fieldset class="starability-basic stars" style="width: 200px; margin: auto; text-align: left">
+              <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+              <input type="radio" id="first-rate1" name="rating" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="rating" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="rating" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="rating" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="rating" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+            <textarea class="form-control" name="comment" cols="30" rows="3" placeholder="Type here..." style="width:100%"></textarea>
+            <button class="btn btn-sm btn-primary mt-2">Submit</button>
+          </form>
+
+          <div class="reviews">
+            <%for(let review of product.reviews){%>
+              <div class="onereview">
+                <div class="star-rating">
+                  <p class="starability-result" data-rating="<%= review.rating %>"></p>
+                </div>
+                <div class="review-body">
+                  <p><%=review.comment%></p>
+                </div>
+              </div>
+            <%}%>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- similar products -->
+<div class="similar-products" style="display:flex; justify-content: center; align-items: center; text-align: center;">
+  <p class="d-inline-flex gap-1" style="text-align: center;">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Similar Products</a>
+  </p>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body" style="background-color: rgba(169, 169, 169, 0.409);">
+        <div class="similar" style="display:flex; justify-content: center; align-items: center; flex-flow: row; flex-wrap: wrap; gap:2rem; " >
+          <%similarProducts.forEach(similarProduct=>{%>
+            <div style="height:300px; width:200px; border: 2px solid black;">
+              <div class="img " style="height:40%;">
+                <img style="width: 100%;  height:100%;" src="<%= similarProduct.img%>" class="mx-auto card-img-top" alt="..." >
+              </div>
+              <div class="details" style="height:60%;  text-align: center;">
+                <p class="card-title"> <%= similarProduct.name%></p>
+                <p class="card-title">Rating : <%= similarProduct.rating%></p>
+                <p class="card-text">₹ <%=similarProduct.price%></p>
+                <a href="/products/<%=similarProduct.id%>" class="btn btn-primary">Show</a>
+              </div>
+            </div>
+          <%})%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../../partials/footer')%>

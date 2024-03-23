@@ -1,0 +1,25 @@
+<%- include('../../partials/header')%>
+<%- include('../../partials/navbar')%>
+
+<%- include('../../partials/flash')%>
+    <div class="container d-flex flex-wrap gap-2 mt-5 ml-0">
+      
+        <% products.forEach(product=>{%>
+            <div class="card" style="width: 15rem; height:28rem; background-color: rgb(206, 204, 200);">
+                <img src="<%= product.img %>" class="card-img-top" alt="..." style="height:50%;">
+                <%if(currUser && currUser.wishlist.includes(product._id)){%>
+                    <i productid="<%=product._id%>" class="fa-solid fa-heart btn like-btn" style="position:absolute; right:0; background-color: rgba(250, 235, 215, 0.468);"></i>
+                <%}else{%>
+                    <i productid="<%=product._id%>" class="fa-regular fa-heart btn like-btn" style="position:absolute; right:0; background-color: rgba(250, 235, 215, 0.468);"></i>
+                <%}%>
+                <div class="card-body" style="height:50%;">
+                  <h5 class="card-title" style="text-align: center;"><%= product.name%></h5>
+                  <h5 class="card-title">Rs <%= product.price%></h5>
+                  <!-- <h5 class="card-text rating">Rating <%= product.rating %> </h5> -->
+                  <p class="card-text"><%=product.desc.substring(0,60) %>...</p>
+                  <a href="/products/<%=product.id%>" class="btn btn-primary">Show</a>
+                </div>
+            </div>
+        <%})%>
+    </div>
+    <%-include('../../partials/footer')%>

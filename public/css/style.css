@@ -1,0 +1,127 @@
+.card >img{
+    height:60%;
+    width:100%;
+}
+
+.container{
+    display:flex;
+    width:100vw;
+    height:100vh;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* padding:0 2rem; */
+
+}
+.card-body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+body{
+    background-color: beige;
+    /* background-image: 
+    url("https://media.istockphoto.com/id/1322375999/photo/abstract-pastel-yellow-studio-background-for-product-presentation-empty-room-with-shadows-of.webp?b=1&s=170667a&w=0&k=20&c=5k3Id7Hg4REtCud_ZzxWwSsgCWOaEJ4pYQyOWyG6B4E="); */
+    overflow-x: hidden;
+    /* text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5); */
+    box-shadow: outset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+#mynav{
+    background-color:aquamarine;
+    height:60px;
+}
+
+.buttons{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.5rem;
+}
+
+.card{
+    height:max-content;
+    overflow: hidden;
+    /* margin-top: 10rem; */
+}
+
+
+
+.new-nav2 {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  /* Media query for smaller screens */
+ @media only screen and (max-width: 768px) {
+    .new-nav2{
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    
+  }
+
+  @media(max-width:700px){
+    nav .styling-nav{
+        padding:0 0.5rem;
+        background-color: aquamarine;
+    }
+  }
+
+nav{
+    /* justify-content: space-evenly; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    /* padding:5rem 0; */
+}
+
+.styling-nav{
+     padding:0 3rem; 
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.Main-login{
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items:center ; */
+    width: 100vw;
+    height:100vh;
+    padding:2rem;
+}
+
+/* .similar-products{
+    height: max-content;
+    width:100vw;
+}
+
+.similar{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    width:100%;
+    height:350px;
+    gap: 1rem;
+    padding:0 3rem;
+
+} */
+
+.fa-solid.fa-heart{
+    color: red;
+}

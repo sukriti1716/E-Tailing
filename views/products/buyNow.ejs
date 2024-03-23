@@ -1,0 +1,130 @@
+<%- include('../../partials/header')%>
+<%- include('../../partials/navbar')%>
+
+<div class="BUY" style="display:flex; padding:1rem;  flex-direction: column; width:100vw; height:100vh;">
+    <!-- login  -->
+        <!-- <p class="d-inline-flex gap-2" > -->
+            <!-- <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Login</a> -->
+        <!-- </p> -->
+        <div class="d-flex justify-content-center ">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Login</a>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="loginUser" style="margin-bottom: 1rem; padding:1rem; ">
+                    <div class="card card-body " style="background-color: rgba(169, 169, 169, 0.176) ;">
+                        <%if(currUser){%>
+                            <label class="form-check-label" for="flexCheckChecked">Logged in</label>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>   
+                        <%}%>
+                        <p>Haven't Logged in? <span><a href="/login">Login</a></span></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    <!-- add address -->
+        <div class="d-flex justify-content-center mt-4">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Add Address If not added</a>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="address" style="margin-bottom: 1rem; padding:1rem; ">
+                    <div class="card card-body" style="background-color: rgba(169, 169, 169, 0.176) ;" >
+                        <%if(currUser){%>
+                            <%if(user.address){%>
+                                <div style="display:flex; flex-direction: column; border:2px solid black; padding:1rem;">
+                                    <h2 style="text-align: center;">Address Details</h2>
+                                    <h5 class="card-title">Name : <%= user.address.name%></h5>
+                                    <h5 class="card-title">Address : <%= user.address.address%></h5>
+                                    <h5 class="card-text">City : <%=user.address.city%></h5>
+                                    <h5 class="card-text">PinCode : <%=user.address.pincode%></h5>
+                                    <h5 class="card-text">Locality : <%=user.address.locality%></h5>
+                                    <h5 class="card-text">Number : <%=user.address.number%></h5>
+                                </div>
+                            <%}else{%>
+                           
+                                <form action="/user/addaddress" method="post">
+                                        <div >
+                                           <input type="text" name="name" placeholder="Name">
+                                        </div><br>
+                                        <div>
+                                            <input type="number" name="number" placeholder="10 -digit mobile number">
+                                        </div><br>
+                                        <div>
+                                            <input type="number" name="pincode" placeholder="Pincode ">
+                                        </div><br>
+                                        <div>
+                                            <input type="text" name="locality" placeholder="Locality">
+                                        </div><br>
+                                        <div>
+                                            <textarea name="address" id="address" cols="30" rows="10">Address</textarea>
+                                        </div><br>
+                                        <div style="margin-bottom: 1rem;">
+                                            <input type="text" name="city" placeholder="City">
+                                        </div>
+                                        <div>
+                                            <button type="submit">Save Address</button>   
+                                        </div>  
+                                </form>
+                           <%}%>
+                        <%}%>
+                   </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    
+    <!-- order details -->
+        <div class="d-flex justify-content-center mt-4">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Order Details</a>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample3">
+                <div class="order-summary" style="margin-bottom: 1rem; padding:1rem;">
+                    <div class="card card-body" style="background-color: rgba(169, 169, 169, 0.176) ;" >
+                        <div class="card New mx-auto" " >
+                            <div style="height:50%;">
+                                <img style="width: 100%; height:350px; " src="<%= product.img%>" class="mx-auto card-img-top" alt="..." >
+                            </div>
+                            <div class="card-body" style="height:50%; background-color: rgba(169, 169, 169, 0.635);">
+                                <h5 class="card-title">Product : <%= product.name%></h5>
+                                <h5 class="card-title">Rating : <%= product.rating%></h5>
+                                <h5 class="card-text" id="amount" productid="<%=product._id%>">₹ <%=product.price%></h5>
+                                <h5>Category : <%=product.Category%></h5>
+                                <p class="card-text"><%=product.desc%></p>
+                            </div>
+                        </div>  
+                    </div>  
+                </div>
+              </div>
+            </div>
+        </div> 
+    
+    <!-- payment options -->
+        <div class="d-flex justify-content-center mt-4" >
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Payment </a>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample4">
+                <div class="payment-options" style="margin-bottom: 1rem; padding:1rem;" >
+                    <div class="card card-body" style="background-color: rgba(169, 169, 169, 0.176) ;">
+                        <a href="" id="payment-button">Make Payment</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+       
+   
+</div>
+
+
+<script src="/css/js/payment.js"></script>
+<%-include('../../partials/footer')%>
+

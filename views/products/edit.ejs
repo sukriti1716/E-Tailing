@@ -1,0 +1,45 @@
+<%- include('../../partials/header')%>
+<%- include('../../partials/navbar')%>
+
+<div class="container">
+    <form action="/products/<%=product.id%>?_method=PUT" method="POST" style="width:100%">
+        <div>
+            <label for="name">Product Name</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter Name" value="<%=product.name%>" style="display:block; width:100%;">
+        </div>
+        <div>
+            <label for="img">Product Image</label><br>
+            <input type="text" id="img" name="img" placeholder="Enter Image" value="<%=product.img%>" style="display:block; width:100%;">
+        </div>
+        <div>
+            <label for="price">Product Price</label><br>
+            <input type="text" id="price" name="price" placeholder="Enter Price" value="<%=product.price%>" style="display:block; width:100%;">
+        </div>
+        <div>
+            <label for="Category">Category</label><br>
+            <select name="Category" id="Category" style="display: block; width:100%;"><%=product.category%>
+                <option value="Select">Select</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Bags">Bags</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Beauty">Beauty</option>
+                <option value="Grocery">Grocery</option>
+            </select>
+        </div>
+        <div>
+            <label for="rating">Product Rating</label><br>
+            <input type="text" id="rating" name="rating" placeholder="Enter Rating" value="<%=product.rating%>" style="display:block; width:100%;">
+        </div>
+        <div>
+            <label for="desc">Product Description</label><br>
+            <textarea name="desc" id="desc" cols="30" rows="10" style="display:block; width:100%;"><%=product.desc%></textarea>
+        </div>
+
+        <button class="btn-primary" type="submit">Save</button>
+
+    </form>
+
+</div>
+
+<%-include('../../partials/footer')%>

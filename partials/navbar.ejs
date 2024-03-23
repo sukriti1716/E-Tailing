@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">E-Commerce</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/clothing">Clothing</a></li>
+            <li><a class="dropdown-item" href="/electronics">Electronics</a></li>
+            <li><a class="dropdown-item" href="/shoes">Shoes</a></li>
+            <li><a class="dropdown-item" href="/bags">Bags</a></li>
+            <li><a class="dropdown-item" href="/beauty">Beauty</a></li>
+            <li><a class="dropdown-item" href="/grocery">Grocery</a></li>
+          </ul>
+        </li>
+        <div style="display:flex; justify-content: center; align-items: center; margin-left: 0.7rem;">
+          <a href="/showcart" style="text-decoration: none; color: black;  font-size: 1rem;"><i class="fa-solid fa-cart-shopping"></i>
+          </a>
+          <span>
+            <%if(currUser){%>
+            <%=cartlength%>
+            <%}else{%>
+                 0
+            <%}%>
+          </span> 
+        </div>
+        <% if(currUser){ %>
+          <% if(userrole==='seller'){ %>
+            <li class="nav-item" style="margin-left: 1rem;">
+              <a class="nav-link" href="/products/new">New Product</a>
+            </li>
+          <%}%>
+        <%}%>
+      </ul> 
+
+    <!-- if username exists, that is, username has logged in, then only show logout -->
+     <% if(currUser){ %>
+      <div class="logout" style="display:flex; flex-direction: row; gap:1rem; align-items: center; justify-content: center;">
+        <%if(loggedinuser && loggedinuser.length>0){%>
+          <a href="/showwishlist"> <i class="fa-solid fa-heart " ></i></a>
+          <a href="#" style="color:black; text-decoration: none;"><%=loggedinuser%></a>
+        <%}%>
+        <a href="/logout">LogOut</a>
+      </div>
+    <% } else { %>
+        <div class="login">
+           <a href="/login"> Login</a>
+        </div>  
+    <% } %>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

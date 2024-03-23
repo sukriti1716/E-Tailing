@@ -1,0 +1,36 @@
+<nav class=" navbar  navbar-light bg-light styling-nav  " style="width:100vw; height:max-content; " id="mynav">
+  <div>
+    <a class="navbar-brand" href="#">E-Commerce</a>
+  </div>
+    
+    <div class="expand navbar-expand-lg" id="navbarNav">
+      <ul class="navbar-nav new-nav2">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products/new">New</a>
+        </li>
+      </ul>
+    </div>
+   
+    
+    <%if(req.user.Username && req.user.Username.length>0){%>
+      <div class="logout">
+        <a href="/logout">LogOut</a>
+      </div>
+    <%}%>
+
+    
+    <div class="profile" >
+     <div class="profile-image">
+        <a href="/login"><img src="https://tse4.mm.bing.net/th?id=OIP.jixXH_Els1MXBRmKFdMQPAHaHa&pid=Api&P=0&h=180" style="width:20px; height:20px;"></a>
+     </div>
+     <div class="profile-name">
+        <p><%=req.user.Username%></p>
+     </div>
+    </div>
+  </nav>
