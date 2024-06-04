@@ -7,9 +7,9 @@
         <h2>Cart Items</h2>
         <% if (cartitems && Array.isArray(cartitems)) { %>
             <% cartitems.forEach(product => { %>
-                <div class="card" style="width: 15rem; height:28rem; background-color: rgb(206, 204, 200);">
-                    <img src="<%= product.img %>" class="card-img-top" alt="..." style="height:50%;">
-                    <div class="card-body" style="height:50%;">
+                <div class="card" id="<%= product.id %>" style="width: 25rem; height:15rem; display:grid; grid-template-columns:50% 50%;background-color: rgb(206, 204, 200); flex-direction: column;">
+                    <img src="<%= product.img %>" class="card-img-top" alt="..." style="height:100%; object-fit:cover;">
+                    <div class="card-body" >
                     <h5 class="card-title" style="text-align: center;"><%= product.name%></h5>
                     <h5 class="card-title">Rs <%= product.price%></h5>
                     <!-- <h5 class="card-text rating">Rating <%= product.rating %> </h5> -->
@@ -54,7 +54,7 @@
         <%}%>
     </div>
     <div style="margin-top:6rem; border: 2px solid black; padding:1rem; background-color: rgba(0, 0, 255, 0.388); height: max-content; border-radius: 5%;">
-        <a href="" id="place-order" style="text-decoration: none; color:black;">Place Order</a>
+        <a href="/placeOrders" id="place-order" style="text-decoration: none; color:black;">Place Order</a>
     </div>
 </div>
 

@@ -1,27 +1,36 @@
+
 console.log('connected')
 const placeOrderButton=document.querySelector('#place-order')
 
-placeOrderButton.addEventListener('click',(e)=>{
+placeOrderButton.addEventListener('click', async(e)=>{
     e.preventDefault()
     const amount=document.querySelector('#total-amount').innerText.split(' ').pop()
     console.log(amount)
-    placeorder(amount*100)
+    const cartItems = document.querySelectorAll('.card');
+    const productIds = Array.from(cartItems).map(product => product.id);
+    console.log(productIds);
+
+    await placeorder(parseInt(amount), productIds);
+    // await placeorder(parseInt(amount))
     //makepayment(amount*100)
 })
 
-async function placeorder(amount){
+async function placeorder(amount,productIds){
     try{
          // getting res from api
-        
+       
         const res=await axios({
             method:'post',
             url:'/placeOrders',
-            data:{amount},
+            data: {
+                amount:amount*100,
+                products: productIds // Include product IDs in the request data
+            },
             headers:{'X-Requested-With': 'XMLHttpRequest'},
         })
         console.log(res)
         const  options = {
-            "key": "rzp_test_8wvQsvdLHaDloc",
+            "key": "rzp_test_bKd9OKXqInfEiI",
             "amount": amount,
             "name": "Ecommerce",
             "description": "Test Transaction",

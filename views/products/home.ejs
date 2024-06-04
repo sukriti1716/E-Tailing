@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
+    <title>Shopping Complex</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/home.css">
@@ -14,24 +14,24 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-left mb-0">E-Commerce</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-right">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                    <a class="nav-link" href="/products">Products</a>
+                <h3 class="float-md-left mb-0" style="color:white;">E-Tailing</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-right" >
+                    <a class="nav-link active" aria-current="page" href="/home" style="color:lightblue;">Home</a>
+                    <a class="nav-link" href="/products" style="color:lightblue;">Products</a>
                     <% if(!currUser) { %>
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="/login" style="color:lightblue;">Login</a>
+                    <a class="nav-link" href="/register" style="color:lightblue">Register</a>
                     <% } else { %>
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout" style="color:lightblue;">Logout</a>
                     <% } %>
                 </nav>
             </div>
         </header>
         <main class="px-3">
-            <h1>E-Commerce</h1>
-            <p class="lead"> Welcome to Shopping Cart! <br> Jump right in and explore our many products. <br>
+            <h1  style="color:white;">E-Tailing</h1>
+            <p class="lead" style="color:lightblue;"> Welcome to World Of Shopping! <br> Jump right in and explore our many products. <br>
                 Dive into our diverse product selection, ranging from cutting-edge gadgets to timeless classics. <br>Feel free to add some of your own and comment on others!</p>
-            <a href="/products" class="btn btn-sm btn-secondary font-weight-bold border-white bg-white ">View
+            <a href="/products" class="btn btn-sm btn-success font-weight-bold border-white  ">View
                 Products</a>
         </main>
 

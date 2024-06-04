@@ -22,7 +22,7 @@
 }
 
 body{
-    background-color: beige;
+    background-color: rgba(241,229,209,0.9);
     /* background-image: 
     url("https://media.istockphoto.com/id/1322375999/photo/abstract-pastel-yellow-studio-background-for-product-presentation-empty-room-with-shadows-of.webp?b=1&s=170667a&w=0&k=20&c=5k3Id7Hg4REtCud_ZzxWwSsgCWOaEJ4pYQyOWyG6B4E="); */
     overflow-x: hidden;
@@ -79,6 +79,7 @@ nav{
     align-items: center;
     text-align: center;
     /* padding:5rem 0; */
+    background-color: rgb(119, 187, 243);
 }
 
 .styling-nav{
@@ -124,4 +125,13 @@ nav{
 
 .fa-solid.fa-heart{
     color: red;
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: rgb(165 204 242 / 69%) !important;
+}
+
+.texthome{
+    color: black;
 }

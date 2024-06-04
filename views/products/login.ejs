@@ -6,23 +6,25 @@
     <%- include('../../partials/flash') %>
 
       <h1 class="display-4 mb-4" style="text-align: center;">Login</h1>
-
-        <form action="/login" method="post" style="padding:2rem;">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-            </div >
-            <div style="display:flex; justify-content:center;">
-              <button type="submit" class="btn btn-sm btn-primary">Login</button>
-            </div>
-          </form>
-          <div class="mt-1" style="text-align: center;">
-            <span>Haven't registered yet? </span><a href="/register">register</a>
+      <div style="padding:2rem; background-color: rgb(177, 214, 226); border:0.2rem solid black; margin:2rem;">
+        <form action="/login" method="post" style="padding:2rem; ">
+          <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
           </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+          </div >
+          <div style="display:flex; justify-content:center;">
+            <button type="submit" class="btn btn-sm btn-primary">Login</button>
+          </div>
+        </form>
+        <div class="mt-1" style="text-align: center;">
+          <span>Haven't registered yet? </span><a href="/register">register</a>
+        </div>
+      </div>
+        
     </div>
 </div>
 

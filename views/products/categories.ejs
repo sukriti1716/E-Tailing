@@ -6,7 +6,7 @@
       
         <% products.forEach(product=>{%>
             <div class="card" style="width: 15rem; height:28rem; background-color: rgb(206, 204, 200);">
-                <img src="<%= product.img %>" class="card-img-top" alt="..." style="height:50%;">
+                <img src="<%= product.img %>" class="card-img-top" alt="..." style="height:50%; object-fit:cover;">
                 <%if(currUser && currUser.wishlist.includes(product._id)){%>
                     <i productid="<%=product._id%>" class="fa-solid fa-heart btn like-btn" style="position:absolute; right:0; background-color: rgba(250, 235, 215, 0.468);"></i>
                 <%}else{%>
@@ -22,4 +22,5 @@
             </div>
         <%})%>
     </div>
+    <script src="css/js/wishList.js"></script>
     <%-include('../../partials/footer')%>

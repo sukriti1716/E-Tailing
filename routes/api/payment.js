@@ -4,8 +4,8 @@ const Razorpay=require('razorpay')
 const Order=require('../../models/order')
 const {isloggedin}=require('../../middlewares/productmiddleware')
 const {validatePaymentVerification}=require('razorpay/dist/utils/razorpay-utils')
-const KEY_ID='rzp_test_HB3FZsyoVzVSSJ'
-const KEY_SECRET='bFdqBpa2nBc7XWdRdP3pFJzW'
+const KEY_ID=process.env.KEYID
+const KEY_SECRET=process.env.KEYSECRET
 
 router.post('/orders',isloggedin,async (req,res)=>{
     try{
@@ -25,7 +25,8 @@ router.post('/orders',isloggedin,async (req,res)=>{
         await Order.create({
             _id:order.id,
             amount:order.amount,
-            user:req.user
+            user:req.user.id
+            // products:products
         })
         console.log(order)
         // sending res as json since we are doing payment in csr
@@ -44,15 +45,17 @@ router.post('/placeOrders',isloggedin,async(req,res)=>{
     try{
             // creating instance of razorpay
         const instance=new Razorpay({key_id:KEY_ID,key_secret:KEY_SECRET})
+        console.log(KEY_ID,KEY_SECRET)
 
         // getting amount
-        const {amount}=req.body
-        console.log(amount)
+        const {amount,products}=req.body
+        console.log(amount,products)
 
         // creation options
         const option={
             amount:parseInt(amount),
             currency:"INR"
+          
         }
 
         // creating order
@@ -60,9 +63,18 @@ router.post('/placeOrders',isloggedin,async(req,res)=>{
 
         // creating Order in database
         await Order.create({
-            _id:order.id,
-            amount:order.amount,
-            user:req.user
+            _id: order.id,
+            user: req.user._id, // Assuming you have user authentication
+            products: products.map(productId => ({
+                productId,
+                // Optionally include more product details
+            })),
+            amount: amount,
+            paymentStatus: false, // Initial payment status is false
+            // _id:order.id,
+            // amount:order.amount,
+            // user:req.user.id
+            // products:products
         })
 
         res.status(201).json({

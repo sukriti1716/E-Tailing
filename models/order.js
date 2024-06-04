@@ -6,7 +6,12 @@ const orderSchema=mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'User'
     },
-    products:[],
+    // products:[
+    //     {
+    //         type:mongoose.Types.ObjectId,
+    //         ref:'Product'
+    //     }
+    // ],
     amount:{
         type:Number,
         min:0

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express=require('express')
 const app=express();
 const Product=require('./models/product')
@@ -74,7 +75,7 @@ app.use((req,res,next)=>{
 
 // connecting to mongoose database
 // it returns a promise
-mongoose.connect('mongodb://127.0.0.1:27017/E-commerce-1st')
+mongoose.connect(process.env.DBURL)
     .then(()=>{
         console.log('db connected')
     })
@@ -83,7 +84,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/E-commerce-1st')
     })
 
 app.get('/',(req,res)=>{
-    res.send('working fine')
+    // res.send('working fine')
+    res.render('products/home')
 })
 
 
@@ -109,5 +111,5 @@ app.get('/home',(req,res)=>{
 })
 
 app.listen(4444,()=>{
-    console.log('server is up at port ',4444)
+    console.log('server is up at port ',process.env.PORT)
 })

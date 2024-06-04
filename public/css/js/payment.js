@@ -1,13 +1,15 @@
+// const keyid=process.env.KEYID
+// console.log
 console.log('connected')
 const paymentbutton=document.querySelector('#payment-button')
 
 
 
-paymentbutton.addEventListener('click',(e)=>{
+paymentbutton.addEventListener('click',async (e)=>{
     e.preventDefault()
     const amount=document.querySelector('#amount').innerText.split(' ').pop()
     console.log(amount)
-    makepayment(amount*100)
+    await makepayment(parseInt(amount))
 })
 
  async function makepayment(amount){
@@ -22,7 +24,7 @@ paymentbutton.addEventListener('click',(e)=>{
         })
          console.log(res)
         const  options = {
-            "key": "rzp_test_8wvQsvdLHaDloc",
+            "key": "rzp_test_bKd9OKXqInfEiI",
             "amount": amount,
             "name": "Ecommerce",
             "description": "Test Transaction",
