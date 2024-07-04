@@ -8,8 +8,10 @@ const orderSchema=mongoose.Schema({
     },
     // products:[
     //     {
-    //         type:mongoose.Types.ObjectId,
-    //         ref:'Product'
+    //         productId: {
+    //             type: mongoose.Types.ObjectId,
+    //             ref: 'Product'
+    //         }
     //     }
     // ],
     amount:{
