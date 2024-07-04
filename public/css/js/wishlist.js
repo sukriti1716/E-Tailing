@@ -10,6 +10,8 @@ document.addEventListener('click',(evt)=>{
     }
 })
 
+// updating wishlist
+
 async function updateWhishlist(productid,btn){
     try{
         console.log(productid,'hi')
